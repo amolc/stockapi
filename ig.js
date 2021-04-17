@@ -3,8 +3,10 @@
 //console.log = function() {}
 var rest = require('restler');
 var async = require('async');
-//const API = 'https://api.ig.com/gateway/deal/';
-const API = 'https://demo-api.ig.com/gateway/deal/';
+const LIVE_API = 'https://api.ig.com/gateway/deal/';
+const DEMO_API = 'https://demo-api.ig.com/gateway/deal/';
+var isdemo = "true";
+
 
 /**
  * Constructor
@@ -12,16 +14,23 @@ const API = 'https://demo-api.ig.com/gateway/deal/';
  * @param {string} key - Your IG Markets account key.
  * @param {string} identifier - Your IG Markets username.
  * @param {string} password - Your IG Markets password.
+ * @param {string} isdemo - Your IG Markets password.
  */
 
 this.cst = null;
-var IG = function (key, identifier, password) {
+this.API = null;
+this.isdemo = true;
+
+var IG = function (key, identifier, password, isdemo) {
 
     this.key = key;
     this.identifier = identifier;
     this.password = password;
+    this.isdemo = isdemo;
     this.token = null;
 };
+
+if(isdemo){API=DEMO_API}else{API=LIVE_API}
 /**
  * Make a HTTP(S) request.
  *
