@@ -1,5 +1,3 @@
-var should = require('chai').should();
-
 
 
 const IG = require('./ig.js');
@@ -10,31 +8,49 @@ var IG_IDENTIFIER = 'nodejs';
 var IG_PASSWORD = '10gXWOqeaf!';
 var IG_API_DEMO = 'true';
 
-
 var ig = new IG(IG_API_KEY,IG_IDENTIFIER,IG_PASSWORD);
 
 var epic = 'CS.D.EURUSD.MINI.IP';
-var searchTerm = 'EURUSD';
-
- /*ig.accounts(function (err, data) {
-    if (err) {console.log(err)}
+/*ig.accounts(function (err, data) {
+ 
     else { console.log(data)};
+    if (err) {console.log(err)}
+    
 });
-
 ig.accountHistory(function (err, data) {
     if (err) {console.log(err)}
+    
     else { console.log(data)};
-});*/
-
-
-ig.accountTransactions(function (err, data) {
-    if (err) {console.log(err)}
-    else { console.log(data)};
-});
-/*ig.findMarkets(searchTerm, function (err, data) {
-    if (err) {console.log(err)}
-    else { console.log(data)};
-});
-*/
 
     
+    
+   /* var should = require('chai').should();
+        if (err) {console.log(err)}
+        else { console.log(data)};
+            if (err) {console.log(err)}
+            else { console.log(data)};
+    
+       */
+            ig.positions(function (err, data) {
+                if (err) {console.log(err)}
+                
+                else { console.log(data)};
+              });
+               
+            ig.positionsDealId(function (err, data) {
+                if (err) {console.log(err)}
+                else { console.log(data)};
+               });
+        
+             ig.positionsSprintMarkets(function (err, data) {
+                if (err) {console.log(err)}
+                else { console.log(data)};
+               });
+
+
+              ig.workingOrders(function (err, data) {
+                if (err) {console.log(err)}
+                else { console.log(data)};
+                });
+
+        

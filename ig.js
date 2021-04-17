@@ -1,28 +1,27 @@
-//console.log = function() {}
 
+
+//console.log = function() {}
 var rest = require('restler');
 var async = require('async');
-
 //const API = 'https://api.ig.com/gateway/deal/';
 const API = 'https://demo-api.ig.com/gateway/deal/';
-
-
+śśś
 /**
- * Constructor
+ * Constructorśśś
  *
  * @param {string} key - Your IG Markets account key.
  * @param {string} identifier - Your IG Markets username.
  * @param {string} password - Your IG Markets password.
  */
 
+this.cst = null;
 var IG = function (key, identifier, password) {
+
     this.key = key;
     this.identifier = identifier;
     this.password = password;
     this.token = null;
-    this.cst = null;
 };
-
 /**
  * Make a HTTP(S) request.
  *
@@ -179,27 +178,36 @@ IG.prototype.accountTransactions = function (callback) {
 /**
  * Dealing
  *
- */
+ */// Returns all open positions for the active account.
+ 
+ IG.prototype.positions = function (callback) {
+ this._request('get', 'positions', null, 2, callback);
+ IG.prototype.positions = function (callback) {
+};
 
-// Returns all open positions for the active account.
-IG.prototype.positions = function (callback) {
+///Returns an open position for the active account by deal identifier.
+    IG.prototype.positionsDealId = function (callback) {
     this._request('get', 'positions', null, 2, callback);
-};
+    IG.prototype.positions = function (callback) {
+   };
 
-// Returns all open sprint market positions for the active account.
-IG.prototype.positionsSprintMarkets = function (callback) {
-    this._request('get', 'positions/sprintmarkets', null, 2, callback);
-};
+ // Returns all open sprint market positions for the active account.
+ IG.prototype.positionsSprintMarkets = function (callback) {
+     this._request('get', 'positions/sprintmarkets', null, 2, callback);
+     IG.prototype.positions = function (callback) {
 
-// Returns all open working orders for the active account.
-IG.prototype.workingOrders = function (callback) {
-    this._request('get', 'workingorders', null, 2, callback);
-};
+    };
+    
 
-/**
- * Markets
- *
- */
+    // Returns all open working orders for the active account.   
+     IG.prototype.workingOrders = function (callback) { 
+                this._request('get', 'workingorders', null, 2, callback);
+                };
+
+
+
+    // Markets
+
 
 // Returns all markets matching the search term.
 IG.prototype.findMarkets = function (keyword, callback) {
@@ -211,6 +219,7 @@ IG.prototype.findMarkets = function (keyword, callback) {
 IG.prototype.prices = function (epic, callback) {
     this._request('get', 'prices/' + epic, null, 3, callback);
 };
+
 
 /**
  * Watchlists
