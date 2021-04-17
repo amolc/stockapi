@@ -1,41 +1,31 @@
-//var should = require('chai').should();
+var should = require('chai').should();
 
-const IG = require('ig-markets');
-var ig = new IG(
-    process.env.IG_KEY,
-    process.env.IG_IDENTIFIER,
-    process.env.IG_PASSWORD
-);
+
+
+const IG = require('./ig.js');
+
+
+var IG_API_KEY = '6ea1af381eac1648df10cae8e5781ebb2393897f';
+var IG_IDENTIFIER = 'nodejs';
+var IG_PASSWORD = '10gXWOqeaf!';
+var IG_API_DEMO = 'true';
+
+
+var ig = new IG(IG_API_KEY,IG_IDENTIFIER,IG_PASSWORD);
 
 var epic = 'CS.D.EURUSD.MINI.IP';
 var searchTerm = 'EURUSD';
 
-describe('Accounts', function () {
-
-    it('/accounts', function () {
-        ig.accounts(function (err, data) {
-            if (err) done(err);
-            else done();
-        });
-    });
-
+ ig.accounts(function (err, data) {
+    if (err) {console.log(err)}
+    else { console.log(data)};
 });
 
 
-describe('Markets', function () {
-
-    it('/prices/' + epic, function () {
-        ig.prices(epic, function (err, data) {
-            if (err) done(err);
-            else done();
-        });
-    });
-
-    it('/markets?searchTerm=' + searchTerm, function () {
-        ig.findMarkets(searchTerm, function (err, data) {
-            if (err) done(err);
-            else done();
-        });
-    });
-
+ig.findMarkets(searchTerm, function (err, data) {
+    if (err) {console.log(err)}
+    else { console.log(data)};
 });
+
+
+    
