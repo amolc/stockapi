@@ -16,16 +16,25 @@ var ig = new IG(IG_API_KEY,IG_IDENTIFIER,IG_PASSWORD);
 var epic = 'CS.D.EURUSD.MINI.IP';
 var searchTerm = 'EURUSD';
 
- ig.accounts(function (err, data) {
+ /*ig.accounts(function (err, data) {
     if (err) {console.log(err)}
     else { console.log(data)};
 });
 
+ig.accountHistory(function (err, data) {
+    if (err) {console.log(err)}
+    else { console.log(data)};
+});*/
 
-ig.findMarkets(searchTerm, function (err, data) {
+
+ig.accountTransactions(function (err, data) {
     if (err) {console.log(err)}
     else { console.log(data)};
 });
-
+/*ig.findMarkets(searchTerm, function (err, data) {
+    if (err) {console.log(err)}
+    else { console.log(data)};
+});
+*/
 
     

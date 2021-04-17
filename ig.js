@@ -106,7 +106,18 @@ IG.prototype._request = function (method, action, data, version, callback) {
                             callback(null, data);
                         });
                         break;
-
+                    case 'put':
+                            rest.postJson(url, data, {headers: headers}).on('complete', function (data, res) {
+                                //console.log('post : ' + url);
+                                callback(null, data);
+                            });
+                            break;
+                    case 'delete':
+                        rest.postJson(url, data, {headers: headers}).on('complete', function (data, res) {
+                            //console.log('post : ' + url);
+                            callback(null, data);
+                        });
+                        break;
                     default:
                         return callback(new Error('Error: HTTP method not defined, please review API call'));
 
@@ -156,6 +167,10 @@ IG.prototype.accountHistory = function (callback) {
     this._request('get', 'history/activity', null, 3, callback);
 };
 
+// Returns the transaction history. By default returns the minute prices within the last 10 minutes..
+IG.prototype.accountTransactions = function (callback) {
+    this._request('get', '/history/transactions', null, 2, callback);
+};
 // Returns the transaction history. By default returns the minute prices within the last 10 minutes.
 IG.prototype.accountTransactions = function (callback) {
     this._request('get', 'history/transactions', null, 2, callback);
