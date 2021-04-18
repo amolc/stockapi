@@ -8,19 +8,20 @@ var IG_IDENTIFIER = 'nodejs';
 var IG_PASSWORD = '10gXWOqeaf!';
 var IG_API_DEMO = 'true';
 
-var ig = new IG(IG_API_KEY,IG_IDENTIFIER,IG_PASSWORD);
+var ig = new IG(IG_API_KEY,IG_IDENTIFIER,IG_PASSWORD,IG_API_DEMO);
 
 var epic = 'CS.D.EURUSD.MINI.IP';
-/*ig.accounts(function (err, data) {
- 
-    else { console.log(data)};
-    if (err) {console.log(err)}
+
+/*  ig.accounts(function (err, data) {
+     else { console.log(data)};
+       if (err) {console.log(err)}
     
 });
-ig.accountHistory(function (err, data) {
-    if (err) {console.log(err)}
+      ig.accountHistory(function (err, data) {
+      else { console.log(data)};
+       if (err) {console.log(err)}
     
-    else { console.log(data)};
+   
 
     
     

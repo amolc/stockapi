@@ -5,9 +5,9 @@ var rest = require('restler');
 var async = require('async');
 //const API = 'https://api.ig.com/gateway/deal/';
 const API = 'https://demo-api.ig.com/gateway/deal/';
-śśś
+
 /**
- * Constructorśśś
+ * Constructor
  *
  * @param {string} key - Your IG Markets account key.
  * @param {string} identifier - Your IG Markets username.
@@ -185,6 +185,7 @@ IG.prototype.accountTransactions = function (callback) {
  IG.prototype.positions = function (callback) {
 };
 
+
 ///Returns an open position for the active account by deal identifier.
     IG.prototype.positionsDealId = function (callback) {
     this._request('get', 'positions', null, 2, callback);
@@ -232,3 +233,6 @@ IG.prototype.watchlists = function (callback) {
 };
 
 module.exports = IG;
+ }
+}
+ }
