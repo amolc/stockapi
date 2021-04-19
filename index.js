@@ -1,3 +1,4 @@
+// var should = require('chai').should();
 
 
 const IG = require('./ig.js');
@@ -62,3 +63,4 @@ ig.findMarkets(epic,function (err, data) {
                 });
 
         
+              

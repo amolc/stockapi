@@ -1,10 +1,12 @@
 
-
 //console.log = function() {}
+
 var rest = require('restler');
 var async = require('async');
+
 //const API = 'https://api.ig.com/gateway/deal/';
 const API = 'https://demo-api.ig.com/gateway/deal/';
+
 
 /**
  * Constructor
@@ -14,14 +16,14 @@ const API = 'https://demo-api.ig.com/gateway/deal/';
  * @param {string} password - Your IG Markets password.
  */
 
-this.cst = null;
 var IG = function (key, identifier, password) {
-
     this.key = key;
     this.identifier = identifier;
     this.password = password;
     this.token = null;
+    this.cst = null;
 };
+
 /**
  * Make a HTTP(S) request.
  *
@@ -105,18 +107,23 @@ IG.prototype._request = function (method, action, data, version, callback) {
                             callback(null, data);
                         });
                         break;
-                    case 'put':
+
+                        case 'put':
                             rest.postJson(url, data, {headers: headers}).on('complete', function (data, res) {
                                 //console.log('post : ' + url);
                                 callback(null, data);
                             });
                             break;
-                    case 'delete':
-                        rest.postJson(url, data, {headers: headers}).on('complete', function (data, res) {
-                            //console.log('post : ' + url);
-                            callback(null, data);
-                        });
-                        break;
+                                          
+                            
+                            case 'delete':
+                                rest.postJson(url, data, {headers: headers}).on('complete', function (data, res) {
+                                    //console.log('post : ' + url);
+                                    callback(null, data);
+                                });
+                                break;
+        
+
                     default:
                         return callback(new Error('Error: HTTP method not defined, please review API call'));
 
@@ -166,10 +173,6 @@ IG.prototype.accountHistory = function (callback) {
     this._request('get', 'history/activity', null, 3, callback);
 };
 
-// Returns the transaction history. By default returns the minute prices within the last 10 minutes..
-IG.prototype.accountTransactions = function (callback) {
-    this._request('get', '/history/transactions', null, 2, callback);
-};
 // Returns the transaction history. By default returns the minute prices within the last 10 minutes.
 IG.prototype.accountTransactions = function (callback) {
     this._request('get', 'history/transactions', null, 2, callback);
@@ -178,37 +181,27 @@ IG.prototype.accountTransactions = function (callback) {
 /**
  * Dealing
  *
- */// Returns all open positions for the active account.
- 
- IG.prototype.positions = function (callback) {
- this._request('get', 'positions', null, 2, callback);
- IG.prototype.positions = function (callback) {
+ */
+
+// Returns all open positions for the active account.
+IG.prototype.positions = function (callback) {
+    this._request('get', 'positions', null, 2, callback);
 };
 
+// Returns all open sprint market positions for the active account.
+IG.prototype.positionsSprintMarkets = function (callback) {
+    this._request('get', 'positions/sprintmarkets', null, 2, callback);
+};
 
-///Returns an open position for the active account by deal identifier.
-    IG.prototype.positionsDealId = function (callback) {
-    this._request('get', 'positions', null, 2, callback);
-    IG.prototype.positions = function (callback) {
-   };
+// Returns all open working orders for the active account.
+IG.prototype.workingOrders = function (callback) {
+    this._request('get', 'workingorders', null, 2, callback);
+};
 
- // Returns all open sprint market positions for the active account.
- IG.prototype.positionsSprintMarkets = function (callback) {
-     this._request('get', 'positions/sprintmarkets', null, 2, callback);
-     IG.prototype.positions = function (callback) {
-
-    };
-    
-
-    // Returns all open working orders for the active account.   
-     IG.prototype.workingOrders = function (callback) { 
-                this._request('get', 'workingorders', null, 2, callback);
-                };
-
-
-
-    // Markets
-
+/**
+ * Markets
+ *
+ */
 
 // Returns all markets matching the search term.
 IG.prototype.findMarkets = function (keyword, callback) {
@@ -221,7 +214,6 @@ IG.prototype.prices = function (epic, callback) {
     this._request('get', 'prices/' + epic, null, 3, callback);
 };
 
-
 /**
  * Watchlists
  *
@@ -233,6 +225,3 @@ IG.prototype.watchlists = function (callback) {
 };
 
 module.exports = IG;
- }
-}
- }
