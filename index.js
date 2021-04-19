@@ -10,13 +10,23 @@ var IG_API_DEMO = 'true';
 
 var ig = new IG(IG_API_KEY,IG_IDENTIFIER,IG_PASSWORD,IG_API_DEMO);
 
-var epic = 'CS.D.EURUSD.MINI.IP';
+var epic = 'BITCOIN';
+
+ig.accounts(function (err, data) {
+  if (err) {console.log(err)}
+  else { console.log(data)};
+});
+    
 
 ig.accountHistory(function (err, data) {
     if (err) {console.log(err)}
     else { console.log(data)};
 });
       
+ig.findMarkets(epic,function (err, data) {
+  if (err) {console.log(err)}
+  else { console.log(data)};
+});
     
    
 
