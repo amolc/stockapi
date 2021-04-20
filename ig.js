@@ -189,7 +189,7 @@ IG.prototype.positions = function (callback) {
 };
 
 // Returns all open sprint market positions for the active account.
-IG.prototype.positionsSprintMarkets = function (callback) {
+IG.prototype.sprintMarkets = function (callback) {
     this._request('get', 'positions/sprintmarkets', null, 2, callback);
 };
 

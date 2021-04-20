@@ -46,12 +46,9 @@ ig.findMarkets(epic,function (err, data) {
                 else { console.log(data)};
               });
                
-            ig.positionsDealId(function (err, data) {
-                if (err) {console.log(err)}
-                else { console.log(data)};
-               });
+           
         
-             ig.positionsSprintMarkets(function (err, data) {
+             ig.sprintMarkets(function (err, data) {
                 if (err) {console.log(err)}
                 else { console.log(data)};
                });
